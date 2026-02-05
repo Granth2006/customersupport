@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- HEADER / NAVBAR -->
@@ -70,7 +71,7 @@
                         smart escalation to human agents, and voice-ready support across web and Telegram — 24/7.
                     </p>
                     <div class="hero-cta">
-                        <button class="cta-btn primary large" data-testid="chat-with-ai-btn" onclick="openChatbot()">
+                        <button class="cta-btn primary large locked" data-testid="chat-with-ai-btn" onclick="openChatbot()">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                             </svg>
@@ -290,7 +291,7 @@
                         <!-- Inside .chat-window -->
                         <div class="chat-input-container">
                             <form id="chatForm" class="chat-form" 
-                                action="https://darci-postpeduncular-johnsie.ngrok-free.dev/webhook-test/support" 
+                                action="https://darci-postpeduncular-johnsie.ngrok-free.dev/webhook/granth" 
                                 method="POST">
                                 <input 
                                     type="text" 
@@ -804,6 +805,36 @@
         <span class="chat-btn-label">Chat</span>
     </button>
 
+
+
+<!-- Login Modal (shown automatically on page load) -->
+    <div id="loginModal" class="modal">
+    <div class="modal-content">
+        <h2>Welcome to Customer Helper</h2>
+        <p>Please sign in with Google to continue and access all features.</p>
+
+        <div id="g_id_onload"
+            data-client_id="618760627892-3sigk02k7pphk907pnc475j2fr0au0h1.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+        </div>
+
+        <p style="margin-top: 24px; font-size: 0.9rem; color: #666;">
+        By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+    </div>
+    </div>
+    
     <script src="script.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

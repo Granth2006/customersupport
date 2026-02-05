@@ -1679,3 +1679,38 @@ ul {
     background: var(--bg-main);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;                    /* visible by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  color: var(--text-heading);
+}
+
+.modal-content p {
+  margin-bottom: 2rem;
+  color: var(--text-body);
+}
+
+.g_id_signin {
+  margin: 0 auto 1.5rem;
+}
