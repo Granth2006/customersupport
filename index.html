@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Helper - AI-Powered Customer Support Automation</title>
+    <meta name="description" content="Automate your customer support with AI. Instant replies, smart escalation, and voice-ready agents across web and Telegram.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo" data-testid="logo">
+                <span class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="url(#logo-gradient)"/>
+                        <path d="M10 12C10 10.8954 10.8954 10 12 10H20C21.1046 10 22 10.8954 22 12V18C22 19.1046 21.1046 20 20 20H18L14 24V20H12C10.8954 20 10 19.1046 10 18V12Z" fill="white"/>
+                        <circle cx="14" cy="15" r="1.5" fill="#0EA5E9"/>
+                        <circle cx="18" cy="15" r="1.5" fill="#0EA5E9"/>
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0F172A"/>
+                                <stop offset="1" stop-color="#0EA5E9"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </span>
+                Customer Helper
+            </a>
+            
+            <button class="mobile-menu-btn" data-testid="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" data-testid="nav-links">
+                <li><a href="#home" data-testid="nav-home">Home</a></li>
+                <li><a href="#features" data-testid="nav-features">Features</a></li>
+                <li><a href="#demo" data-testid="nav-demo">Demo</a></li>
+                <li><a href="#telegram" data-testid="nav-telegram">Telegram Bot</a></li>
+                <li><a href="#contact" data-testid="nav-contact">Contact</a></li>
+            </ul>
+            
+            <button class="cta-btn primary" data-testid="try-live-chat-btn" onclick="openChatbot()">
+                Try Live Chat
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        AI-Powered Support
+                    </div>
+                    <h1 class="hero-title" data-testid="hero-title">
+                        AI-Powered Customer Support, <span class="gradient-text">Automated</span>
+                    </h1>
+                    <p class="hero-description" data-testid="hero-description">
+                        Transform your customer service with intelligent AI agents. Get instant replies, 
+                        smart escalation to human agents, and voice-ready support across web and Telegram — 24/7.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="cta-btn primary large" data-testid="chat-with-ai-btn" onclick="openChatbot()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            Chat with AI
+                        </button>
+                        <a href="#telegram" class="cta-btn secondary large" data-testid="open-telegram-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                            Open Telegram Bot
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">80%</span>
+                            <span class="stat-label">Queries Automated</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">&lt;3s</span>
+                            <span class="stat-label">Response Time</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Availability</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-visual-card">
+                        <div class="visual-chat-preview">
+                            <div class="chat-bubble bot">
+                                <div class="avatar bot-avatar"></div>
+                                <div class="message">Hi! I'm your AI assistant. How can I help you today?</div>
+                            </div>
+                            <div class="chat-bubble user">
+                                <div class="message">I need help with my order #12345</div>
+                            </div>
+                            <div class="chat-bubble bot">
+                                <div class="avatar bot-avatar"></div>
+                                <div class="message">I found your order! It's currently being prepared and will ship tomorrow.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-badge badge-1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        Instant Response
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Smart Detection
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="features-section" id="features">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">Features</span>
+                    <h2 class="section-title" data-testid="features-title">Everything You Need for Modern Support</h2>
+                    <p class="section-description">
+                        Powerful AI capabilities combined with seamless integrations to deliver exceptional customer experiences.
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card" data-testid="feature-multichannel">
+                        <div class="feature-icon multichannel">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Multi-Channel Support</h3>
+                        <p class="feature-description">
+                            Seamlessly handle customer queries across web chat and Telegram with a unified AI brain that maintains context across all channels.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">Web</span>
+                            <span class="tag">Telegram</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card" data-testid="feature-intent">
+                        <div class="feature-icon intent">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4"/>
+                                <path d="M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">AI Intent Detection</h3>
+                        <p class="feature-description">
+                            Advanced NLP understands customer needs instantly, categorizing queries and routing them to the right solution automatically.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">Classification</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card" data-testid="feature-escalation">
+                        <div class="feature-icon escalation">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Smart Escalation</h3>
+                        <p class="feature-description">
+                            Complex queries are automatically routed to human agents with full context, ensuring seamless handoffs without repetition.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">Handoff</span>
+                            <span class="tag">Context</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card" data-testid="feature-ticketing">
+                        <div class="feature-icon ticketing">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Automated Ticketing</h3>
+                        <p class="feature-description">
+                            Every conversation is automatically logged and tracked. Generate tickets, set priorities, and never lose a customer query.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">Tracking</span>
+                            <span class="tag">Priority</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card featured" data-testid="feature-voice">
+                        <div class="feature-badge">Future Ready</div>
+                        <div class="feature-icon voice">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Voice-Ready AI Agent</h3>
+                        <p class="feature-description">
+                            Our AI is ready for voice integration. Enable phone support with the same intelligent brain powering your chat experience.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="tag">Voice</span>
+                            <span class="tag">Phone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE CHATBOT DEMO SECTION -->
+        <section class="demo-section" id="demo">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">Live Demo</span>
+                    <h2 class="section-title" data-testid="demo-title">Try Our AI Assistant Right Now</h2>
+                    <p class="section-description">
+                        Experience the power of AI-driven customer support. Ask anything and see how our assistant handles your queries.
+                    </p>
+                </div>
+                
+                <div class="demo-container">
+                    <div class="chat-window" data-testid="chat-window">
+                        <div class="chat-header">
+                            <div class="chat-header-left">
+                                <div class="bot-avatar-small"></div>
+                                <div class="chat-header-info">
+                                    <span class="chat-header-name">AI Support Agent</span>
+                                    <span class="chat-header-status">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="chat-minimize-btn" data-testid="chat-minimize-btn" onclick="toggleChatbot()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"/>
+                                    <line x1="6" y1="6" x2="18" y2="18"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages" data-testid="chat-messages">
+                            <div class="chat-message bot">
+                                <div class="message-avatar"></div>
+                                <div class="message-content">
+                                    <p>Hello! Welcome to Customer Helper. I'm your AI support assistant. How can I help you today?</p>
+                                    <span class="message-time">Just now</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <input 
+                                type="text" 
+                                id="chatInput" 
+                                class="chat-input" 
+                                placeholder="Type your message..."
+                                data-testid="chat-input"
+                                autocomplete="off"
+                            >
+                            <button class="chat-send-btn" data-testid="chat-send-btn" onclick="sendMessage()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-info">
+                        <h3>Quick Test Ideas</h3>
+                        <div class="test-prompts">
+                            <button class="prompt-btn" data-testid="prompt-1" onclick="insertPrompt('What are your business hours?')">
+                                What are your business hours?
+                            </button>
+                            <button class="prompt-btn" data-testid="prompt-2" onclick="insertPrompt('I need help with my order')">
+                                I need help with my order
+                            </button>
+                            <button class="prompt-btn" data-testid="prompt-3" onclick="insertPrompt('Can I speak to a human agent?')">
+                                Can I speak to a human agent?
+                            </button>
+                            <button class="prompt-btn" data-testid="prompt-4" onclick="insertPrompt('What payment methods do you accept?')">
+                                What payment methods do you accept?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELEGRAM BOT SECTION -->
+        <section class="telegram-section" id="telegram">
+            <div class="section-container">
+                <div class="telegram-content">
+                    <div class="telegram-info">
+                        <span class="section-badge">Telegram Integration</span>
+                        <h2 class="section-title" data-testid="telegram-title">Support Your Customers on Telegram</h2>
+                        <p class="telegram-description">
+                            The same powerful AI that powers our web chat is available on Telegram. Your customers can reach you 
+                            on their favorite messaging app while you maintain a unified support experience.
+                        </p>
+                        <ul class="telegram-benefits">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                Same AI brain across all channels
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                Instant notifications for customers
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                Rich media support (images, files)
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                No app download required
+                            </li>
+                        </ul>
+                        <a href="https://t.me/YourBotName" target="_blank" class="telegram-btn" data-testid="telegram-chat-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                            Chat on Telegram
+                        </a>
+                        <p class="telegram-note">
+                            Connect with our bot: <strong>@CustomerHelperBot</strong>
+                        </p>
+                    </div>
+                    <div class="telegram-visual">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="telegram-chat-preview">
+                                    <div class="tg-header">
+                                        <div class="tg-back">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="15 18 9 12 15 6"/>
+                                            </svg>
+                                        </div>
+                                        <div class="tg-avatar"></div>
+                                        <div class="tg-info">
+                                            <span class="tg-name">Customer Helper</span>
+                                            <span class="tg-status">bot</span>
+                                        </div>
+                                    </div>
+                                    <div class="tg-messages">
+                                        <div class="tg-msg bot">Hi there! I'm the Customer Helper bot. Send me a message anytime!</div>
+                                        <div class="tg-msg user">I have a question about my subscription</div>
+                                        <div class="tg-msg bot">I'd be happy to help! What would you like to know about your subscription?</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- USER PROFILE SECTION -->
+        <section class="profile-section" id="profile">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">User Dashboard</span>
+                    <h2 class="section-title" data-testid="profile-title">Track Your Support Journey</h2>
+                    <p class="section-description">
+                        View your support history, ticket status, and personalized AI interactions all in one place.
+                    </p>
+                </div>
+                
+                <div class="profile-grid">
+                    <div class="profile-card" data-testid="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1698941789910-968a44df8d04?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHNtaWxpbmclMjBwb3J0cmFpdCUyMGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzAyNzk1ODh8MA&ixlib=rb-4.1.0&q=85" alt="User Avatar">
+                            </div>
+                            <div class="profile-info">
+                                <h3 class="profile-name" data-testid="profile-name">Sarah Johnson</h3>
+                                <span class="profile-id" data-testid="profile-id">User ID: USR-2024-00847</span>
+                            </div>
+                            <div class="profile-status active" data-testid="profile-status">
+                                <span class="status-indicator"></span>
+                                Active
+                            </div>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-box">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Total Tickets</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">10</span>
+                                <span class="stat-label">Resolved</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Pending</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Last Interaction</span>
+                                <span class="detail-value" data-testid="last-interaction">2 hours ago</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Escalation Status</span>
+                                <span class="detail-value status-badge resolved" data-testid="escalation-status">No Active Escalation</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Preferred Channel</span>
+                                <span class="detail-value">Web Chat</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Member Since</span>
+                                <span class="detail-value">January 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card" data-testid="activity-card">
+                        <h3 class="activity-title">Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon resolved">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">Ticket #1247 resolved by AI</span>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon chat">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">New chat session started</span>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon escalation">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">Ticket #1245 escalated to human</span>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon resolved">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">Ticket #1245 resolved by agent</span>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCALATION EXPLANATION SECTION -->
+        <section class="escalation-section" id="escalation">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">How It Works</span>
+                    <h2 class="section-title" data-testid="escalation-title">Intelligent Escalation Flow</h2>
+                    <p class="section-description">
+                        Our AI handles routine queries instantly while seamlessly routing complex issues to human experts.
+                    </p>
+                </div>
+                
+                <div class="escalation-flow" data-testid="escalation-flow">
+                    <div class="flow-step">
+                        <div class="step-icon user-step">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">User Query</h3>
+                        <p class="step-desc">Customer sends a message through any channel</p>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                            <path d="M2 12H38M38 12L28 2M38 12L28 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon ai-step">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                <line x1="15" y1="9" x2="15.01" y2="9"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">AI Analysis</h3>
+                        <p class="step-desc">AI analyzes intent and searches knowledge base</p>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                            <path d="M2 12H38M38 12L28 2M38 12L28 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon detection-step">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4"/>
+                                <path d="M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Intent Detection</h3>
+                        <p class="step-desc">Classifies query complexity and confidence level</p>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                            <path d="M2 12H38M38 12L28 2M38 12L28 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="flow-decision">
+                        <div class="decision-branch resolution">
+                            <div class="step-icon resolution-step">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <h3 class="step-title">AI Resolution</h3>
+                            <p class="step-desc">80% of queries resolved instantly</p>
+                        </div>
+                        <div class="decision-or">OR</div>
+                        <div class="decision-branch escalation">
+                            <div class="step-icon escalation-step">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h3 class="step-title">Human Escalation</h3>
+                            <p class="step-desc">Complex cases with full context</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM SECTION -->
+        <section class="contact-section" id="contact">
+            <div class="section-container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-badge">Get in Touch</span>
+                        <h2 class="section-title" data-testid="contact-title">Let's Talk About Your Support Needs</h2>
+                        <p class="contact-description">
+                            Ready to transform your customer support? Reach out and let's discuss how Customer Helper can work for your business.
+                        </p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <span>hello@customerhelper.ai</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <span>San Francisco, CA</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm" data-testid="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                class="form-input" 
+                                placeholder="Your name"
+                                data-testid="contact-name-input"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="you@company.com"
+                                data-testid="contact-email-input"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                class="form-input form-textarea" 
+                                placeholder="Tell us about your support challenges..."
+                                data-testid="contact-message-input"
+                                rows="4"
+                                required
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" data-testid="contact-submit-btn">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="32" height="32" rx="8" fill="url(#footer-logo-gradient)"/>
+                                <path d="M10 12C10 10.8954 10.8954 10 12 10H20C21.1046 10 22 10.8954 22 12V18C22 19.1046 21.1046 20 20 20H18L14 24V20H12C10.8954 20 10 19.1046 10 18V12Z" fill="white"/>
+                                <circle cx="14" cy="15" r="1.5" fill="#0EA5E9"/>
+                                <circle cx="18" cy="15" r="1.5" fill="#0EA5E9"/>
+                                <defs>
+                                    <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#0F172A"/>
+                                        <stop offset="1" stop-color="#0EA5E9"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </span>
+                        Customer Helper
+                    </a>
+                    <p class="footer-description">
+                        AI-powered customer support that never sleeps. Automate responses, detect intent, and escalate smartly.
+                    </p>
+                </div>
+                
+                <div class="footer-links-group">
+                    <div class="footer-links">
+                        <h4 class="footer-links-title">Product</h4>
+                        <ul>
+                            <li><a href="#features" data-testid="footer-features">Features</a></li>
+                            <li><a href="#demo" data-testid="footer-demo">Live Demo</a></li>
+                            <li><a href="#" data-testid="footer-pricing">Pricing</a></li>
+                            <li><a href="#" data-testid="footer-docs">Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4 class="footer-links-title">Company</h4>
+                        <ul>
+                            <li><a href="#" data-testid="footer-about">About Us</a></li>
+                            <li><a href="#contact" data-testid="footer-contact">Contact</a></li>
+                            <li><a href="#" data-testid="footer-careers">Careers</a></li>
+                            <li><a href="#" data-testid="footer-blog">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4 class="footer-links-title">Legal</h4>
+                        <ul>
+                            <li><a href="#" data-testid="footer-privacy">Privacy Policy</a></li>
+                            <li><a href="#" data-testid="footer-terms">Terms of Service</a></li>
+                            <li><a href="#" data-testid="footer-cookies">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-hackathon">
+                    <span class="hackathon-badge">Built for NERDZ Hackathon</span>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-link" data-testid="social-twitter" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" data-testid="social-linkedin" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" data-testid="social-github" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="footer-copyright">
+                    &copy; 2024 Customer Helper. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CHATBOT BUTTON -->
+    <button class="floating-chat-btn" id="floatingChatBtn" data-testid="floating-chat-btn" onclick="openChatbot()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="chat-btn-label">Chat</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
