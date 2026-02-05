@@ -287,21 +287,27 @@
                             </div>
                         </div>
                         
+                        <!-- Inside .chat-window -->
                         <div class="chat-input-container">
-                            <input 
-                                type="text" 
-                                id="chatInput" 
-                                class="chat-input" 
-                                placeholder="Type your message..."
-                                data-testid="chat-input"
-                                autocomplete="off"
-                            >
-                            <button class="chat-send-btn" data-testid="chat-send-btn" onclick="sendMessage()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="22" y1="2" x2="11" y2="13"/>
-                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                                </svg>
-                            </button>
+                            <form id="chatForm" class="chat-form" 
+                                action="https://darci-postpeduncular-johnsie.ngrok-free.dev/webhook-test/granth" 
+                                method="POST">
+                                <input 
+                                    type="text" 
+                                    id="chatInput" 
+                                    name="message"
+                                    class="chat-input" 
+                                    placeholder="Type your message..."
+                                    autocomplete="off"
+                                    required
+                                >
+                                <button type="submit" class="chat-send-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="22" y1="2" x2="11" y2="13"/>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     
