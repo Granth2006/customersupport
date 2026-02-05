@@ -1661,3 +1661,9 @@ ul {
         width: 240px;
     }
 }
+
+
+.nav-links a.active {
+    color: var(--color-secondary);
+    font-weight: 600;
+}
